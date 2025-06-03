@@ -2,7 +2,6 @@ import Header from "../components/Header";
 import Separator from "../components/Separator";
 import Footer from "../components/Footer";
 import styles from "./OpenAIInterviewerBot.module.css";
-import { Link } from "react-router-dom";
 
 const OpenAIInterviewerBot = () => {
   return (
@@ -12,10 +11,6 @@ const OpenAIInterviewerBot = () => {
         <div className={styles.bannerTextContainer}>
           <h1>Interviewer Chat-Bot</h1>
           <p>Powered By OpenAI</p>
-
-          <div className={styles.mainButton}>
-            <Link to="/">HOME</Link>
-          </div>
         </div>
       </figure>
       <figure className={styles.separatorContainer}>
@@ -24,7 +19,7 @@ const OpenAIInterviewerBot = () => {
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
           <div>
-            <h1>Gemini Interviewer</h1>
+            <h1>OpenAI Interviewer</h1>
           </div>
           <div>
             <div>

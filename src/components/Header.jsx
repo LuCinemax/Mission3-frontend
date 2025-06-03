@@ -18,7 +18,7 @@ const Header = () => {
                 <ul className={styles.aiList}>
                     <li><Link to="/GeminiInterviewerBot">Gemini</Link></li>
                     <li><Link to="/OpenAIInterviewerBot">OpenAI</Link></li>
-                    <li><Link to="/LlamaInterviewerBot">Llama</Link></li>
+                    <li><Link to="/VercelInterviewerBot">Vercel</Link></li>
                 </ul>
             </div>
         </section>
