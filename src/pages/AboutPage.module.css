@@ -1,3 +1,4 @@
+/* Animations */
 @keyframes slideFadeIn {
   from {
     opacity: 0;
@@ -19,7 +20,7 @@
   }
 }
 
-
+/* ======== Page Container ======== */
 .pageContainer {
     display: flex;
     flex-direction: column;
@@ -29,6 +30,7 @@
     overflow-x: hidden;
 }
 
+/* ======== Banner ======== */
 .bannerImage {
     display: flex;
     background-image: url('../assets/images/About.gif');
@@ -42,6 +44,7 @@
     z-index: 1;
     overflow-x: hidden;
 }
+
 
 .bannerTextContainer {
     display: flex;
@@ -70,23 +73,13 @@
     animation: FadeIn 3s ease-out forwards;
 }
 
-.mainButton Link {
-    display: flex;
-    flex-direction: row;
-    color: #65a6f1;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    font-size: 24px;
-    margin: 40px 10px 0px 350px;
-    animation: FadeIn 3s ease-out forwards;
-}
-
+/* Separator */
 .separatorContainer {
     display: flex;
     z-index: 2;
 }
 
+/* ======== About us Description ======== */
 .infoContainer {
     display: flex;
     justify-content: center;

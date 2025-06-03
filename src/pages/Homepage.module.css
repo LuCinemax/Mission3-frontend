@@ -19,7 +19,6 @@
   }
 }
 
-
 .pageContainer {
     display: flex;
     flex-direction: column;
@@ -64,7 +63,7 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    margin: -25px -50px 5px 50px;
+    margin: -20px -50px 5px 50px;
     font-size: 50px;
     color: #65a6f1;
     animation: FadeIn 3s ease-out forwards;

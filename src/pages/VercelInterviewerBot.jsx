@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Separator from "../components/Separator";
 import Footer from "../components/Footer";
-import styles from "./LlamaInterviewerBot.module.css";
+import styles from "./VercelInterviewerBot.module.css";
 import { Link } from "react-router-dom";
 
 const GeminiInterviewerBot = () => {
@@ -11,11 +11,7 @@ const GeminiInterviewerBot = () => {
       <figure className={styles.bannerImage}>
         <div className={styles.bannerTextContainer}>
           <h1>Interviewer Chat-Bot</h1>
-          <p>Powered By Llama</p>
-
-          <div className={styles.mainButton}>
-            <Link to="/">HOME</Link>
-          </div>
+          <p>Powered By Vercel</p>
         </div>
       </figure>
       <figure className={styles.separatorContainer}>
@@ -24,16 +20,13 @@ const GeminiInterviewerBot = () => {
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
           <div>
-            <h1>Llama Interviewer</h1>
+            <h1>Vercel Interviewer</h1>
           </div>
           <div>
             <div>
-                <h1>Job </h1>
-
+              <h1>Job </h1>
             </div>
-            <div>
-
-            </div>
+            <div></div>
           </div>
         </div>
       </main>
