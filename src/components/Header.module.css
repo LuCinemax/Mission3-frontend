@@ -1,0 +1,81 @@
+.navigationBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 80px;
+    position: relative;
+    z-index: 99;
+    color: white;
+}
+
+.navigationLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+}
+
+.logo {
+    width: 90px;
+}
+
+.companyName {
+    color: #65a6f1;
+}
+
+.aiListContainer {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navListContainer {
+    display: flex;
+    margin-right: 50px;
+    gap: 50px;
+    font-size: 20px;
+    list-style-type: none;
+    color: #65a6f1;
+}
+
+.aiList {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    font-size: 24px;
+    list-style-type: none;
+    color: #65a6f1;
+}
+
+.aiList li a,
+.navListContainer li {
+  transition: color 0.5s ease;
+  cursor: pointer;
+}
+
+/* For <Link> elements */
+.aiList li a:hover,
+.companyName h1 a:hover,
+.navListContainer li:hover {
+  color: #ffffff; /* Or any color you want */
+}
+
+.companyName h1 a {
+  color: #65a6f1;
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+.companyName h1 a:hover {
+  color: #ffffff;
+}

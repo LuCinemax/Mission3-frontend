@@ -1,0 +1,9 @@
+.separator {
+    display: flex;
+    margin-top: 500px;
+    width: 100vw;
+    height: 30vh;
+    opacity: 95%;
+    overflow-x: hidden;
+
+}

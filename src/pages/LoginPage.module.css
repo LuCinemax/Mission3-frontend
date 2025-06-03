@@ -1,0 +1,128 @@
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../assets/images/Background.png');
+  background-size: cover;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  gap: 60px;
+  color: white;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.introBox {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  background-color: #38383863;
+  padding: 100px;
+  border-radius: 20px;
+  box-shadow: 
+    rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  animation: slideFadeIn 1.5s ease-out forwards;
+}
+
+.leftBox, .rightBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  animation: FadeIn 1s ease forwards;
+  min-height: 400px;
+}
+
+.leftBox input {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.leftBox button {
+  background-color: #0ea5e9;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.socials {
+    display: flex;
+
+}
+
+.socials button {
+  margin: 10px 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #44444400;
+  color: white;
+}
+
+.socials > button > img {
+    width: 50px;
+}
+
+.rightBox h2 {
+  color: #65a6f1;
+}
+
+.signupButton {
+  display: inline-block;
+  margin-top: 20px;
+  color: #65a6f1;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 8px 16px;
+  border: 1px solid #65a6f1;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.signupButton:hover {
+  background-color: #65a6f1;
+  color: black;
+}
