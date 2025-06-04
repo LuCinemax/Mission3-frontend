@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import styles from "./VercelInterviewerBot.module.css";
 import { Link } from "react-router-dom";
 
-const GeminiInterviewerBot = () => {
+const VercelInterviewerBot = () => {
   return (
     <div className={styles.pageContainer}>
       <Header></Header>
@@ -35,4 +35,4 @@ const GeminiInterviewerBot = () => {
   );
 };
 
-export default GeminiInterviewerBot;
+export default VercelInterviewerBot;
