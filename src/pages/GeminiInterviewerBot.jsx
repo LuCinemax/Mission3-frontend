@@ -14,13 +14,14 @@ const GeminiInterviewerBot = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userInput.trim() || !jobTitle.trim()) return;
+    const input = e.customInput || userInput;
+    if (!input.trim() || !jobTitle.trim()) return;
 
     try {
-      const response = await axios.post("http://localhost:3001/interview", {
+      const response = await axios.post("http://localhost:3001/interview/standard", {
         sessionId,
         jobTitle,
-        userResponse: userInput,
+        userResponse: input,
       });
       setChatHistory(response.data.history);
       setUserInput("");
@@ -44,6 +45,17 @@ const GeminiInterviewerBot = () => {
       <figure className={styles.separatorContainer}>
         <Separator />
       </figure>
+
+      <div className={styles.topButtons}>
+        <Link to="/GeminiLegacyInterviewerBot" className={styles.navButton}>
+          Legacy Version
+        </Link>
+        <Link to="/GeminiEXInterviewerBot" className={styles.navButton}>
+          Experimental Version
+        </Link>
+        
+      </div>
+      <p className={styles.versionLabel}>v1.0 – Gemini Model Standard</p>
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
           <div className={styles.jobInputSection}>
@@ -55,12 +67,29 @@ const GeminiInterviewerBot = () => {
               onChange={(e) => setJobTitle(e.target.value)}
               className={styles.inputField}
             />
+            <button
+              type="button"
+              className={styles.startButton}
+              onClick={(e) => {
+                handleSubmit({
+                  preventDefault: () => {},
+                  target: { value: "start interview" },
+                  customInput: "start interview",
+                });
+              }}
+            >
+              Start Interview
+            </button>
           </div>
 
           <div className={styles.chatHistory}>
             {chatHistory.map((msg, index) => (
-              <div key={index} className={msg.role === "user" ? styles.userMsg : styles.botMsg}>
-                <strong>{msg.role === "user" ? "Me:" : "Interviewer:"}</strong> {msg.text}
+              <div
+                key={index}
+                className={msg.role === "user" ? styles.userMsg : styles.botMsg}
+              >
+                <strong>{msg.role === "user" ? "Me:" : "Interviewer:"}</strong>{" "}
+                {msg.text}
               </div>
             ))}
           </div>
@@ -70,17 +99,23 @@ const GeminiInterviewerBot = () => {
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              className={styles.inputField}
+              className={styles.inputExpand}
               placeholder="Type your response..."
             />
-            <button type="submit" className={styles.submitButton}>Submit</button>
+            <button type="submit" className={styles.submitButton}>
+              Submit
+            </button>
           </form>
         </div>
       </main>
+      <div className={styles.bottomButton}>
+        <Link to="/TurnersInterviewPage" className={styles.navButton}>
+          Connect to Turners
+        </Link>
+      </div>
       <Footer />
     </div>
   );
 };
 
 export default GeminiInterviewerBot;
-

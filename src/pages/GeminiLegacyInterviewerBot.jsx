@@ -2,76 +2,58 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Separator from "../components/Separator";
 import Footer from "../components/Footer";
-import styles from "./OpenAIInterviewerBot.module.css";
+import styles from "./GeminiLegacyInterviewerBot.module.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-// 🔊 Text-to-Speech function
-const speakText = (text) => {
-  if (!window.speechSynthesis) return;
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  speechSynthesis.speak(utterance);
-};
-
-const OpenAIInterviewerBot = () => {
+const GeminiLegacyInterviewerBot = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [sessionId] = useState(() => Date.now().toString());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const input = e.customInput || userInput;
-    if (!input.trim()) return;
-
-    setChatHistory((prev) => [...prev, { role: "user", text: input }]);
-    setUserInput("");
+    if (!input.trim() || !jobTitle.trim()) return;
 
     try {
-      const response = await fetch("http://localhost:3001/interview/chatgpt", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          jobTitle: jobTitle,
-          userResponse: input,
-        }),
+      const response = await axios.post("http://localhost:3001/interview/gemini_1.0", {
+        sessionId,
+        jobTitle,
+        userResponse: input,
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errorMsg = `Error: ${data.error || "Unknown error."}`;
-        setChatHistory((prev) => [...prev, { role: "model", text: errorMsg }]);
-        speakText(errorMsg);
-        return;
-      }
-
-      setChatHistory((prev) => [
-        ...prev,
-        { role: "model", text: data.response },
-      ]);
-
-      speakText(data.response); // 🔊 Say the response
-    } catch (err) {
-      const fallback = "An unexpected error occurred.";
-      setChatHistory((prev) => [...prev, { role: "model", text: fallback }]);
-      speakText(fallback);
+      setChatHistory(response.data.history);
+      setUserInput("");
+    } catch (error) {
+      console.error("Error sending message:", error);
     }
   };
 
   return (
     <div className={styles.pageContainer}>
-      <Header />
+      {/* ======== Header ======== */}
+      <Header></Header>
+
+      {/* ========= Banner ======= */}
       <figure className={styles.bannerImage}>
         <div className={styles.bannerTextContainer}>
           <h1>Interviewer Chat-Bot</h1>
-          <p>Powered By OpenAI</p>
+          <p>Powered By Gemini</p>
         </div>
       </figure>
       <figure className={styles.separatorContainer}>
         <Separator />
       </figure>
-      <p className={styles.versionLabel}>v1.0 – OpenAI Model ChatGPT</p>
+
+      <div className={styles.topButtons}>
+  <Link to="/GeminiInterviewerBot" className={styles.navButton}>Standard Version</Link>
+  <Link to="/GeminiEXInterviewerBot" className={styles.navButton}>Experimental Version</Link>
+</div>
+<p className={styles.versionLabel}>v1.0 – Gemini Model Legacy</p>
       <main className={styles.infoContainer}>
+      
+      
         <div className={styles.chatBox}>
           <div className={styles.jobInputSection}>
             <label htmlFor="jobTitle">Job Title:</label>
@@ -81,28 +63,23 @@ const OpenAIInterviewerBot = () => {
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               className={styles.inputField}
-              placeholder="e.g., Software Engineer"
             />
             <button
               type="button"
               className={styles.startButton}
-              onClick={() =>
+              onClick={(e) => {
                 handleSubmit({
                   preventDefault: () => {},
+                  target: { value: "start interview" },
                   customInput: "start interview",
-                })
-              }
+                });
+              }}
             >
               Start Interview
             </button>
           </div>
 
           <div className={styles.chatHistory}>
-            {chatHistory.length === 0 && (
-              <div className={styles.initialMessage}>
-                Enter a Job Title and click "Start Interview" to begin.
-              </div>
-            )}
             {chatHistory.map((msg, index) => (
               <div
                 key={index}
@@ -121,21 +98,19 @@ const OpenAIInterviewerBot = () => {
               onChange={(e) => setUserInput(e.target.value)}
               className={styles.inputExpand}
               placeholder="Type your response..."
-              disabled={!jobTitle}
             />
-            <button
-              type="submit"
-              className={styles.submitButton}
-              disabled={!jobTitle || !userInput.trim()}
-            >
+            <button type="submit" className={styles.submitButton}>
               Submit
             </button>
           </form>
         </div>
       </main>
+      <div className={styles.bottomButton}>
+  <Link to="/TurnersInterviewPage" className={styles.navButton}>Connect to Turners</Link>
+</div>
       <Footer />
     </div>
   );
 };
 
-export default OpenAIInterviewerBot;
+export default GeminiLegacyInterviewerBot;

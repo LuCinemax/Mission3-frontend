@@ -2,6 +2,8 @@ import {BrowserRouter,Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage'
 import TermsOfService from './pages/TermsOfService'
 import GeminiInterviewerBot from './pages/GeminiInterviewerBot'
+import GeminiEXInterviewerBot from './pages/GeminiExInterviewerBot'
+import GeminiLegacyInterviewerBot from './pages/GeminiLegacyInterviewerBot'
 import OpenAIInterviewerBot from './pages/OpenAIInterviewerBot'
 import VercelInterviewerBot from './pages/VercelInterviewerBot'
 import AboutPage from './pages/AboutPage'
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/TermsOfService" element={<TermsOfService />} />
         <Route path="/GeminiInterviewerBot" element={<GeminiInterviewerBot />} />
+        <Route path="/GeminiEXInterviewerBot" element={<GeminiEXInterviewerBot />} />
+        <Route path="/GeminiLegacyInterviewerBot" element={<GeminiLegacyInterviewerBot />} />
         <Route path="/OpenAIInterviewerBot" element={<OpenAIInterviewerBot />} />
         <Route path="/VercelInterviewerBot" element={<VercelInterviewerBot />} />
         <Route path="/AboutPage" element={<AboutPage />} />
