@@ -6,6 +6,7 @@ import styles from "./GeminiEXInterviewerBot.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 const GeminiEXInterviewerBot = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -56,7 +57,7 @@ const GeminiEXInterviewerBot = () => {
         
       </div>
 
-      <p className={styles.versionLabel}>v1.0 – Gemini Model Experimental</p>
+      <p className={styles.versionLabel}>v2.0-Flash-Lite – Gemini Model Experimental</p>
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
           <div className={styles.jobInputSection}>

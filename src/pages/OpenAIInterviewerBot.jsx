@@ -4,7 +4,7 @@ import Separator from "../components/Separator";
 import Footer from "../components/Footer";
 import styles from "./OpenAIInterviewerBot.module.css";
 
-// 🔊 Text-to-Speech function
+// 🔊 Text-to-Speech function to read responses out loud
 const speakText = (text) => {
   if (!window.speechSynthesis) return;
   const utterance = new SpeechSynthesisUtterance(text);
@@ -13,20 +13,28 @@ const speakText = (text) => {
 };
 
 const OpenAIInterviewerBot = () => {
+  // Store the job title
   const [jobTitle, setJobTitle] = useState("");
+
+  // Store the user's input message
   const [userInput, setUserInput] = useState("");
+
+  // Keep the conversation history
   const [chatHistory, setChatHistory] = useState([]);
 
+  // Handles sending a message
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const input = e.customInput || userInput;
     if (!input.trim()) return;
 
+    // Add user's message to chat
     setChatHistory((prev) => [...prev, { role: "user", text: input }]);
     setUserInput("");
 
     try {
+      // Fetch to backend
       const response = await fetch("http://localhost:3001/interview/chatgpt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,6 +46,7 @@ const OpenAIInterviewerBot = () => {
 
       const data = await response.json();
 
+      // Text to Speech Error Handling
       if (!response.ok) {
         const errorMsg = `Error: ${data.error || "Unknown error."}`;
         setChatHistory((prev) => [...prev, { role: "model", text: errorMsg }]);
@@ -45,13 +54,15 @@ const OpenAIInterviewerBot = () => {
         return;
       }
 
+      // Add AI response to chat and speak it
       setChatHistory((prev) => [
         ...prev,
         { role: "model", text: data.response },
       ]);
-
-      speakText(data.response); // 🔊 Say the response
+      speakText(data.response);
     } catch (err) {
+      
+      // Text to Speech Error Handling
       const fallback = "An unexpected error occurred.";
       setChatHistory((prev) => [...prev, { role: "model", text: fallback }]);
       speakText(fallback);
@@ -73,6 +84,7 @@ const OpenAIInterviewerBot = () => {
       <p className={styles.versionLabel}>v1.0 – OpenAI Model ChatGPT</p>
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
+          {/* Job Title Input */}
           <div className={styles.jobInputSection}>
             <label htmlFor="jobTitle">Job Title:</label>
             <input
@@ -83,6 +95,7 @@ const OpenAIInterviewerBot = () => {
               className={styles.inputField}
               placeholder="e.g., Software Engineer"
             />
+            {/* Start button sends "start interview" as input */}
             <button
               type="button"
               className={styles.startButton}
@@ -97,6 +110,7 @@ const OpenAIInterviewerBot = () => {
             </button>
           </div>
 
+          {/* Chat history display */}
           <div className={styles.chatHistory}>
             {chatHistory.length === 0 && (
               <div className={styles.initialMessage}>
@@ -114,6 +128,7 @@ const OpenAIInterviewerBot = () => {
             ))}
           </div>
 
+          {/* Input field to send messages */}
           <form onSubmit={handleSubmit} className={styles.inputSection}>
             <input
               type="text"

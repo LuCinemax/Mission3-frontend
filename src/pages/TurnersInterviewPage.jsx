@@ -18,13 +18,14 @@ function TurnersInterviewPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userInput.trim() || !jobTitle.trim()) return;
+    const input = e.customInput || userInput;
+    if (!input.trim() || !jobTitle.trim()) return;
 
     try {
-      const response = await axios.post("http://localhost:3001/interview", {
+      const response = await axios.post("http://localhost:3001/interview/standard", {
         sessionId,
         jobTitle,
-        userResponse: userInput,
+        userResponse: input,
       });
       setChatHistory(response.data.history);
       setUserInput("");
@@ -76,7 +77,9 @@ function TurnersInterviewPage() {
             <img className={styles.financeImg} src={finance} alt="" />
           </figure>
 
+          {/* Chat Box Section */}
           <div className={styles.chatBox}>
+            {/* Job Title Input and Start Button */}
             <div className={styles.jobInputSection}>
               <label htmlFor="jobTitle">Job Title:</label>
               <input
@@ -86,16 +89,33 @@ function TurnersInterviewPage() {
                 onChange={(e) => setJobTitle(e.target.value)}
                 className={styles.inputField}
               />
+              <button
+                type="button"
+                className={styles.startButton}
+                onClick={() =>
+                  handleSubmit({
+                    preventDefault: () => {},
+                    customInput: "start interview",
+                  })
+                }
+              >
+                Start Interview
+              </button>
             </div>
 
+            {/* Chat History */}
             <div className={styles.chatHistory}>
               {chatHistory.map((msg, index) => (
-                <div key={index} className={msg.role === "user" ? styles.userMsg : styles.botMsg}>
+                <div
+                  key={index}
+                  className={msg.role === "user" ? styles.userMsg : styles.botMsg}
+                >
                   <strong>{msg.role === "user" ? "Me:" : "Interviewer:"}</strong> {msg.text}
                 </div>
               ))}
             </div>
 
+            {/* Input + Submit */}
             <form onSubmit={handleSubmit} className={styles.inputSection}>
               <input
                 type="text"

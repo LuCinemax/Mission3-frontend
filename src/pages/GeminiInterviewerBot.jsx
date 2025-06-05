@@ -55,7 +55,7 @@ const GeminiInterviewerBot = () => {
         </Link>
         
       </div>
-      <p className={styles.versionLabel}>v1.0 – Gemini Model Standard</p>
+      <p className={styles.versionLabel}>v2.0-Flash – Gemini Model Standard</p>
       <main className={styles.infoContainer}>
         <div className={styles.chatBox}>
           <div className={styles.jobInputSection}>

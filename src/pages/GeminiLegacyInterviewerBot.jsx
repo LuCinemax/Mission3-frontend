@@ -50,7 +50,7 @@ const GeminiLegacyInterviewerBot = () => {
   <Link to="/GeminiInterviewerBot" className={styles.navButton}>Standard Version</Link>
   <Link to="/GeminiEXInterviewerBot" className={styles.navButton}>Experimental Version</Link>
 </div>
-<p className={styles.versionLabel}>v1.0 – Gemini Model Legacy</p>
+<p className={styles.versionLabel}>v1.5-Flash – Gemini Model Legacy</p>
       <main className={styles.infoContainer}>
       
       

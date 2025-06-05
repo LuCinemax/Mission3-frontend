@@ -33,7 +33,6 @@
   cursor: pointer;
 }
 
-/* Icons */
 .infoSection img {
   width: 10px;
   margin-right: 5px;
@@ -74,7 +73,7 @@ a {
   width: 100%;
 }
 
-/* === Chat Section Additions === */
+/* === Chat Box Section === */
 .chatBox {
   display: flex;
   flex-direction: column;
@@ -86,6 +85,31 @@ a {
   margin: 40px auto;
   overflow-y: auto;
   border: 1px solid #ccc;
+}
+
+.jobInputSection {
+  margin-bottom: 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 👇 START INTERVIEW button styled to match OpenAI style */
+.startButton {
+  margin-left: 350px;
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: #65a6f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.startButton:hover {
+  background-color: #3f8be0;
 }
 
 .chatHistory {
@@ -138,9 +162,4 @@ a {
 
 .submitButton:hover {
   background-color: #005bb5;
-}
-
-.jobInputSection {
-  margin-bottom: 20px;
-  font-size: 16px;
 }
