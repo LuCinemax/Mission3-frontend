@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import styles from "./GeminiEXInterviewerBot.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ReactMarkdown from 'react-markdown';
 
 const GeminiEXInterviewerBot = () => {
   const [jobTitle, setJobTitle] = useState("");
@@ -89,7 +90,9 @@ const GeminiEXInterviewerBot = () => {
                 key={index}
                 className={msg.role === "user" ? styles.userMsg : styles.botMsg}
               >
-                <strong>{msg.role === "user" ? "Me:" : "Interviewer:"}</strong>{" "}
+                <ReactMarkdown>
+                  {msg.role === "user" ? "Me:" : "Interviewer:"}
+                </ReactMarkdown>{" "}
                 {msg.text}
               </div>
             ))}
