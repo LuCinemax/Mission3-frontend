@@ -3,7 +3,7 @@ import Homepage from './pages/Homepage'
 import TermsOfService from './pages/TermsOfService'
 import GeminiInterviewerBot from './pages/GeminiInterviewerBot'
 import OpenAIInterviewerBot from './pages/OpenAIInterviewerBot'
-import VercelInterviewerBot from './pages/VercelInterviewerBot'
+import ClaudeInterviewerBot from './pages/ClaudeInterviewerBot'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
@@ -18,7 +18,7 @@ function App() {
         <Route path="/TermsOfService" element={<TermsOfService />} />
         <Route path="/GeminiInterviewerBot" element={<GeminiInterviewerBot />} />
         <Route path="/OpenAIInterviewerBot" element={<OpenAIInterviewerBot />} />
-        <Route path="/VercelInterviewerBot" element={<VercelInterviewerBot />} />
+        <Route path="/ClaudeInterviewerBot" element={<ClaudeInterviewerBot />} />
         <Route path="/AboutPage" element={<AboutPage />} />
         <Route path="/ContactPage" element={<ContactPage />} />
         <Route path="/LoginPage" element={<LoginPage />} />
