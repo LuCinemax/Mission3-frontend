@@ -14,7 +14,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## DESCRIPTION 
 
-Designed by Kerehama, This interview chatbot is designed to simulate a job interview experience. It guides users through various stages of a mock interview, starting with initial questions, proceeding to follow-up questions, and culminating in constructive feedback on their performance. The chatbot uses Google's Gemini AI to generate natural and relevant interview questions and responses, making the experience dynamic and interactive. It keeps track of the conversation history and the current interview stage to ensure a coherent and structured interview process.
+Designed by Kerehama, This interview chatbot is designed to simulate a job interview experience. It guides users through various stages of a mock interview, starting with initial questions, proceeding to follow-up questions, and culminating in constructive feedback on their performance. The chatbot uses Google's Gemini AI by Sonny, Wisony and Takashi and OpenAI by Kerehama to generate natural and relevant interview questions and responses, making the experience dynamic and interactive. It keeps track of the conversation history and the current interview stage to ensure a coherent and structured interview process.
 
 ## Dependancies
 
