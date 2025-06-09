@@ -5,7 +5,7 @@ import GeminiInterviewerBot from './pages/GeminiInterviewerBot'
 import GeminiEXInterviewerBot from './pages/GeminiExInterviewerBot'
 import GeminiLegacyInterviewerBot from './pages/GeminiLegacyInterviewerBot'
 import OpenAIInterviewerBot from './pages/OpenAIInterviewerBot'
-import VercelInterviewerBot from './pages/VercelInterviewerBot'
+import ClaudeInterviewerBot from './pages/ClaudeInterviewerBot'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
@@ -22,7 +22,7 @@ function App() {
         <Route path="/GeminiEXInterviewerBot" element={<GeminiEXInterviewerBot />} />
         <Route path="/GeminiLegacyInterviewerBot" element={<GeminiLegacyInterviewerBot />} />
         <Route path="/OpenAIInterviewerBot" element={<OpenAIInterviewerBot />} />
-        <Route path="/VercelInterviewerBot" element={<VercelInterviewerBot />} />
+        <Route path="/ClaudeInterviewerBot" element={<ClaudeInterviewerBot />} />
         <Route path="/AboutPage" element={<AboutPage />} />
         <Route path="/ContactPage" element={<ContactPage />} />
         <Route path="/LoginPage" element={<LoginPage />} />
